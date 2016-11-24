@@ -1,14 +1,14 @@
 {
-  "name": "workspace",
+  "name": "",
   "version": "1.0.0",
-  "description": "code test",
-  "main": "index.js",
+  "description": "",
+  "main": "/src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server"
+    "start": "live-server --open=/src/"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Tim Handy",
+  "license": "",
   "devDependencies": {
     "live-server": "^1.1.0"
   }
