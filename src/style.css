@@ -1,0 +1,65 @@
+* {
+    /*border: 1px solid hotpink;*/
+}
+
+.wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 3em;
+    height: 4em;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 1.5em;
+    border-radius: 5px;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+}   
+.logo-black {
+    background-color: black;
+}
+
+.manual, .instagram {
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.twitter {
+    padding-top: 5em;
+    padding-bottom: 5em;
+    position: relative;
+}
+
+.manual, .instagram, .twitter {
+    border: 1px solid #D3D3D3;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+}
+
+.filter {
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+    .col-md-4 {
+        width: 32%;
+    }
+    .col-md-4:nth-child(3n+2) {
+        margin-right: 2%;
+        margin-left: 2%;
+    }
+    .col-md-4:nth-child(3n+1)  {
+        clear: left;
+    }    
+}
+
+.fa {
+    color: white;
+    font-size: 3rem;
+}
+

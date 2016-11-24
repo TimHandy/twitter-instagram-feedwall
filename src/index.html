@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/src/style.css">
+
+    <title>Annual Autumn Fashion Fix </title>
+</head>
+<body>
+    
+    <div class="wrapper">
+        
+        <div class="container-fluid clearfix">
+            
+            <div class="row clearfix">
+                
+                <div class="filter col-xs-12">
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <button id="manual-button" class="btn btn-default btn-block">Manual</button>
+                    </div>
+                    
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <button id="twitter-button" class="btn btn-default btn-block">Tweets</button>
+                    </div>
+                    
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <button id="instagram-button" class="btn btn-default btn-block">IG</button>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+            <div id="cards" class="row clearfix">
+                
+                <script id="manualCard" type="text/template">
+                    <div class="manual col-xs-12 col-sm-6 col-md-4">
+                        <img class="img-responsive" src="{{link-img}}" alt="" >
+                        <img class="img-responsive" src="{{image}}" alt="">
+                        <p>{{text}}</p>
+                        <a href="{{url}}" target="_blank">{{linkText}}</a>
+                        <div class="logo"><p>AFF</p></div>
+                    </div>
+                </script>
+                
+                <script id="twitterCard" type="text/template">
+                    <div class="twitter col-xs-12 col-sm-6 col-md-4">
+                        <p><span>{{userName}}</span></p>
+                        <p>{{{tweet}}}</p>
+                        <div class="logo logo-black"><p><i class="fa fa-twitter"></i></p></div>
+                    </div>
+                </script>
+                
+                <script id="instagramCard" type="text/template">
+                    <div class="instagram col-xs-12 col-sm-6 col-md-4">
+                        <img class="img-responsive" src="{{image}}" alt="" >
+                        <p>{{userName}}</p>
+                        <p>{{{caption}}}</p>
+                        <div class="logo logo-black"><p><i class="fa fa-instagram"></i></p></div>
+                    </div>
+                </script>
+                
+
+                
+            </div>
+            <button id="load-more-button" class="btn btn-default" data-counter="9">Load More</button>
+            
+        </div>
+        
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/src/index.js"></script>
+</body>
+</html>
