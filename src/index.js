@@ -1,22 +1,24 @@
 'use strict'
 
-const controller = {
-    init: function() {
+const controller = (function() {
+    'use strict'
+
+    function init() {
         model.getJson('/src/posts.json', function() {
             console.log('got here')
             console.log(model.jsonData)
             model.dateSort(model.jsonData)
             view.renderCards(model.jsonData)
         })
-    },
-
-    buildManual: function(image, text, url, linkText) {
+    }
+    // these build* functions should go in the view
+    function buildManual(image, text, url, linkText) {
         const view = {text: text, image: image, url: url, linkText: linkText}
         const manualCard = document.getElementById('manualCard').innerHTML
         $('#cards').append(Mustache.render(manualCard, view))
-    },
+    }
 
-    buildTwitter: function(userName, tweet) {
+    function buildTwitter(userName, tweet) {
         tweet = tweet.replace(/(http:\/\/.+)\s/, '<a target="_blank" href="$1">$1</a> ')
                     .replace(/@(\w+)/g, '<a target="_blank" href="https://www.twitter.com/$1">@$1</a>')
                     .replace(/#(\w+)/g, '<a target="_blank" href="https://www.twitter.com/search?q=%23$1&src=typd&lang=en">#$1</a>')
@@ -27,16 +29,23 @@ const controller = {
         const twitterCard = document.getElementById('twitterCard').innerHTML
         
         $('#cards').append(Mustache.render(twitterCard, view))
-    },
+    }
 
-    buildInstagram: function(image, userName, caption) {
+    function buildInstagram(image, userName, caption) {
         caption = caption.replace(/#(\w+)/g, '<a target="_blank" href="https://www.instagram.com/explore/tags/$1/">#$1</a>' )
         const view = {image: image, userName: userName, caption: caption}
         const instagramCard = document.getElementById('instagramCard').innerHTML
         
         $('#cards').append(Mustache.render(instagramCard, view))
     }
-}
+
+    return {
+        init: init,
+        buildManual: buildManual,
+        buildTwitter: buildTwitter,
+        buildInstagram: buildInstagram
+    }
+})()
 
 const view = {
     renderCards: function(jsonData, startPostsIndex = 0) {
@@ -52,7 +61,7 @@ const view = {
             const linkText = jsonItems[i].item_data.link_text
             const type = jsonItems[i].service_name
         
-           
+           // this is logic that should be in the controller!
             // build the template if its a Manual
             if (type === 'Manual') {
                 controller.buildManual(image, text, url, linkText)
@@ -61,14 +70,12 @@ const view = {
                 const user = jsonItems[i].item_data.user
                 const userName = user.usernamefunction
                 const tweet = jsonItems[i].item_data.tweet
-                 
                 controller.buildTwitter(userName, tweet)
             // build the template if its an Instagram
             } else if (type === 'Instagram') {
                 const userName = jsonItems[i].item_data.user.username
                 const image = jsonItems[i].item_data.image.medium
                 const caption = jsonItems[i].item_data.caption
-                
                 controller.buildInstagram(image, userName, caption)
             } 
         }
@@ -94,19 +101,20 @@ const model = {
             const postBDate = new Date(postB.item_created)
             return postBDate - postADate
         })
-        // verify correct ordering, newest first
+        // just used to verify correct ordering, newest first
         sorted.forEach(function(item) {
             console.log(item.item_created)
-
         })
         return sorted
     }
 }
 
+
 controller.init()
 
 
 /* ========================= Click Handlers ======================================= */
+// can I put these inside the view model? how to do that and make them run? do you make them IIFE's somehow?
 
 let manualInstData
 let twitInstData
