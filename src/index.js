@@ -18,34 +18,12 @@ const controller = (function() {
         $('#cards').append(Mustache.render(manualCard, view))
     }
 
-    function buildTwitter(userName, tweet) {
-        tweet = tweet.replace(/(http:\/\/.+)\s/, '<a target="_blank" href="$1">$1</a> ')
-                    .replace(/@(\w+)/g, '<a target="_blank" href="https://www.twitter.com/$1">@$1</a>')
-                    .replace(/#(\w+)/g, '<a target="_blank" href="https://www.twitter.com/search?q=%23$1&src=typd&lang=en">#$1</a>')
-                    
-                    //https://twitter.com/search?q=%23world&src=typd&lang=en
-                    
-        const view = {userName: userName, tweet: tweet}
-        const twitterCard = document.getElementById('twitterCard').innerHTML
-        
-        $('#cards').append(Mustache.render(twitterCard, view))
-    }
-
-    function buildInstagram(image, userName, caption) {
-        caption = caption.replace(/#(\w+)/g, '<a target="_blank" href="https://www.instagram.com/explore/tags/$1/">#$1</a>' )
-        const view = {image: image, userName: userName, caption: caption}
-        const instagramCard = document.getElementById('instagramCard').innerHTML
-        
-        $('#cards').append(Mustache.render(instagramCard, view))
-    }
-
     return {
         init: init,
-        buildManual: buildManual,
-        buildTwitter: buildTwitter,
-        buildInstagram: buildInstagram
+        buildManual: buildManual
     }
 })()
+
 
 const view = {
     renderCards: function(jsonData, startPostsIndex = 0) {
@@ -70,15 +48,36 @@ const view = {
                 const user = jsonItems[i].item_data.user
                 const userName = user.usernamefunction
                 const tweet = jsonItems[i].item_data.tweet
-                controller.buildTwitter(userName, tweet)
+                view.buildTwitter(userName, tweet)
             // build the template if its an Instagram
             } else if (type === 'Instagram') {
                 const userName = jsonItems[i].item_data.user.username
                 const image = jsonItems[i].item_data.image.medium
                 const caption = jsonItems[i].item_data.caption
-                controller.buildInstagram(image, userName, caption)
+                view.buildInstagram(image, userName, caption)
             } 
         }
+    },
+
+    buildTwitter: function(userName, tweet) {
+        tweet = tweet.replace(/(http:\/\/.+)\s/, '<a target="_blank" href="$1">$1</a> ')
+                    .replace(/@(\w+)/g, '<a target="_blank" href="https://www.twitter.com/$1">@$1</a>')
+                    .replace(/#(\w+)/g, '<a target="_blank" href="https://www.twitter.com/search?q=%23$1&src=typd&lang=en">#$1</a>')
+                    
+                    //https://twitter.com/search?q=%23world&src=typd&lang=en
+                    
+        const view = {userName: userName, tweet: tweet}
+        const twitterCard = document.getElementById('twitterCard').innerHTML
+        
+        $('#cards').append(Mustache.render(twitterCard, view))
+    },
+
+    buildInstagram: function(image, userName, caption) {
+        caption = caption.replace(/#(\w+)/g, '<a target="_blank" href="https://www.instagram.com/explore/tags/$1/">#$1</a>' )
+        const view = {image: image, userName: userName, caption: caption}
+        const instagramCard = document.getElementById('instagramCard').innerHTML
+        
+        $('#cards').append(Mustache.render(instagramCard, view))
     }
 }
 

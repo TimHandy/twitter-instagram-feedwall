@@ -7,7 +7,6 @@ Used Mustache to render the cards on the page.
 
 Not sure whether bootstrap is being more of a hiderance? Especially for the breakpoints that don't look good for this app. 
 
-
 TODO: some of the twitter pages have duplicate tags... think there's something wrong with the regex, maybe needs to be more specific and only grab the bits required... maybe a $ at end after a space?
 
 TODO: could I make the app retrieve the next x cards from the json file when the 'load more' button is pressed, rather than retrieving all in one go?
@@ -28,7 +27,8 @@ now playing with the CONTROLLER to attempt to make it exportable via ES5 so that
     1st thing is to move the build* functions from the controller to the view, and likewise, move the logic that currently resides in the view.renderCards, to the controller.
 
 es5 modules: need to make notes on https://coryrylan.com/blog/javascript-module-pattern-basics
-https://www.airpair.com/javascript/posts/the-mind-boggling-universe-of-javascript-moduleshttps://github.com/addyosmani/es6-equivalents-in-es5
+https://www.airpair.com/javascript/posts/the-mind-boggling-universe-of-javascript-modules
+https://github.com/addyosmani/es6-equivalents-in-es5
 https://medium.freecodecamp.com/javascript-modules-a-beginner-s-guide-783f7d7a5fcc#.9in2xk3qe
 https://css-tricks.com/how-do-you-structure-javascript-the-module-pattern-edition/
 Maybe this by Addy: https://github.com/addyosmani/es6-equivalents-in-es5
@@ -42,7 +42,7 @@ Eloquent on modules
 http://eloquentjavascript.net/10_modules.html
 
 
-Running npm test results in complaint about $ not being available. is this because I need to have the https://github.com/addyosmani/es6-equivalents-in-es5jquery in the view, not these controller methods? 
+Running npm test results in complaint about $ not being available. is this because I need to have the jquery in the view, not in the controller 
 
 
 Dave's stuff:
