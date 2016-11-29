@@ -1,0 +1,6 @@
+{
+ "presets": [ "es2015" ]
+}
+
+// This bablrc file and above 'presets'' bit gets around Mocha complaining about:
+//   "SyntaxError: Unexpected token import"
