@@ -26,9 +26,9 @@ The full brief and associated mockups and wireframe docs can be found in the 'br
         
         http://127.0.0.1:8080/src/index.html
 
-The app uses a basic no-config http server (live-server) in order to serve the posts.json file. The app does not work without this simulated server due to security restrictions of Chrome accessing local resources. https://www.npmjs.com/package/live-server
+The app uses webpack-dev-server for dev in order to serve the posts.json file. The app does not work without this simulated server due to security restrictions of Chrome accessing local resources. https://www.npmjs.com/package/live-server
 
-The command used in package.json to launch the server is simply: "live-server --open=/src/"
+
 
 # Notable Features
 

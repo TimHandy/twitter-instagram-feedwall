@@ -1,28 +1,28 @@
 'use strict'
 
-const controller = (function() {
-    'use strict'
+let $ = require('jquery')
+require('./style.css')
+const posts = require('./posts.json')
+//require('file-loader')
+const Mustache = require('mustache')
 
-    function init() {
-        model.getJson('/src/posts.json', function() {
+const controller = {
+
+    init: function() {
+        model.getJson(posts, function() {
             console.log('got here')
             console.log(model.jsonData)
             model.dateSort(model.jsonData)
             view.renderCards(model.jsonData)
         })
-    }
+    },
     // these build* functions should go in the view
-    function buildManual(image, text, url, linkText) {
+    buildManual: function(image, text, url, linkText) {
         const view = {text: text, image: image, url: url, linkText: linkText}
         const manualCard = document.getElementById('manualCard').innerHTML
         $('#cards').append(Mustache.render(manualCard, view))
     }
-
-    return {
-        init: init,
-        buildManual: buildManual
-    }
-})()
+}
 
 
 const view = {
